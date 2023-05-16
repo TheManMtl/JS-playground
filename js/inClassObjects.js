@@ -114,4 +114,10 @@ library.push({
     readingStatus: true
 });
 
+library.push({
+    author: 'xxxx',
+    title: 'yyyyyyyyy',
+    readingStatus: false
+});
+
 bookStatus(library);
