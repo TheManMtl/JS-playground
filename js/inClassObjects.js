@@ -121,3 +121,6 @@ library.push({
 });
 
 bookStatus(library);
+
+printOut("Square braquets: "+library[0]["author"]);
+console.log("Square braquets: (Console method)",library[0]["author"])
