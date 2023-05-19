@@ -2,25 +2,137 @@
  * Ehsan KH. Motlagh
  * student ID: 2340457
 */
+function toConsole(x) {
+	console.log(x);
+}
+/**
+ * Generating two random number
+ * @param {number} min 
+ * @param {number} max 
+ * @returns {number[]}
+ */
+function randomTable() {
 
-//instructions
+	// rows 
+	let rows = generateRandom();
+	//colomns
+	let cols = generateRandom();
 
-/*
-You CAN NOT alter any html. Your function will replace the content of the body tag.
+	showTable(rows, cols)
+}
 
-- PART 1
-1. Create the function randomTable(). It will generate 2 random numbers that will be used to indicate how many rows and columns to use.
 
-2. Your randomTable() function will call the function showTable(rows, cols) that will take rows and columns as 2 parameters in order to create a simple html multiplication table using the rows and columns provided and append it to body.
+/**
+ * Generating a multiplication HTML table based on rows and cols
+ * as params and showing it on the page
+ * @param {number} rows 
+ * @param {number} cols 
+ */
 
-- PART 2
-1. Create the function promptTable that will prompt the user twice for a number. They will be used to indicate how many rows and columns to use.
-	If either is cancelled, do not do anything.
-	If a number is provided (use isNaN), use its absolute integer value
-	If the information in not a number or 0, use a random number between 1 and 10
-2. Your function will call the function showTable(rows, cols) that will take rows and columns as 2 parameters in order to create a simple html multiplication table using the rows and columns provided and append it to body.
+let bodyNode = document.getElementsByTagName("body")[0]; // to have access thruog all the functions
 
-- PART 3 
-1. Add a button with an event listener that will call your promptTable function when clicked
+function showTable(rows, cols) {
 
-*/
+	let tableNode = document.createElement("table");
+	let trNode = document.createElement("tr");
+	trNode.id = "tableHeader";
+	let tdNode;
+	let thNode;
+
+	tableNode.id = "multiplyTB";
+	bodyNode.appendChild(tableNode);
+
+	for (let hed = 0; hed <= cols; hed++) {// generating a header
+		thNode = document.createElement("th");
+		if (hed === 0) { // first cell to be empty
+			thNode.innerText = "";
+		} else {
+			thNode.innerText = hed;
+		}
+		thNode.style.padding = "8px";
+		trNode.appendChild(thNode); // append header to row
+		tableNode.appendChild(trNode);// append first row to table
+	}
+	for (let row = 0; row < rows; row++) {// generating rows
+		trNode = document.createElement("tr"); // new row
+		trNode.id = "row" + (row + 1);// adding id to all rows
+		tableNode.appendChild(trNode);// append to table
+		tdNode = document.createElement("td"); // first col as like header
+		tdNode.style.fontWeight = "bold";
+		tdNode.innerText = (row + 1);
+		tdNode.style.padding = "8px";
+		trNode.appendChild(tdNode);// append first cell to row
+		for (let col = 1; col <= cols; col++) {// generating cols
+			tdNode = document.createElement("td"); // new col
+			tdNode.innerText = col * (row + 1); // calculating the value of the cell col*row
+			tdNode.style.padding = "8px";
+			trNode.appendChild(tdNode);
+		}
+	}
+
+	tableNode.style.border = "2px solid red";
+	tableNode.style.marginTop = "5px";
+}
+
+
+/**
+ * getting two number from user to generate a HTML ,ultiplication table
+ * the numbers will determine the rows and columns of the table
+ */
+function promptTable() {
+	let rowsUser = validateUserNumber(prompt("Enter rows number"));
+	let colsUser = validateUserNumber(prompt("Enter colomns number"));
+	showTable(rowsUser, colsUser)
+}
+
+/**
+ * validating a number 
+ * if null(prompt-> cancel) return -1
+ * if number return absolute integer value
+ * if not valid number return randomly generated number between 1-10(inclusive)
+ * @param {number} num 
+ * @returns {number}
+ */
+function validateUserNumber(num) {
+	if (num === null) {
+		return -1;// in case of cancel 
+	} else if (!isNaN(num)) {
+		return Math.abs(Math.trunc(num));// return the absolute integer value
+	} else if (isNaN(num) || num === 0) {
+		return generateRandom(1, 10) // not valid number
+	}
+}
+
+/**
+ * generating a random number between two numbers inclusivly
+ * @param {number} [min=1] 
+ * @param {number} [max=10] 
+ * @returns {number}
+ */
+function generateRandom(min = 1, max = 10) {
+	return Math.floor(Math.random() * (max - min + 1)) + min; //min,max included
+}
+
+//generating button for multiplication table
+
+let btnNode = document.createElement("button");
+btnNode.id = "showTable";
+btnNode.innerText = "Show Multplication Table";
+btnNode.addEventListener("click", promptTable);
+
+bodyNode.appendChild(btnNode);
+
+//reload button
+
+let btnNodeReload = document.createElement("button");
+btnNodeReload.id = "reloadPage";
+btnNodeReload.innerText = "Reload Page";
+btnNodeReload.addEventListener("click", reloadPage);
+btnNodeReload.style.marginLeft = "15px";
+
+bodyNode.appendChild(btnNodeReload);
+
+function reloadPage() {
+	location.reload();
+}
+
