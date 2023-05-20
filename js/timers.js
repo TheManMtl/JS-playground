@@ -3,6 +3,14 @@ let timerRL;
 let timerUD;
 let rl = "right";
 let ud = "up";
+let bgBodyOrder = "red"; // init for switching between red and black
+let h1ColorsOrder = "black";
+let timerH1Colors;
+let timerbgBlackRed;
+let thisBody = document.getElementsByTagName("body")[0];
+let thisH1 = document.getElementsByTagName("h1")[0];
+let overlap = "";
+
 function RL() {
     if (rl === "right") {
         console.log("right")
@@ -26,13 +34,19 @@ function UD() {
 function bgTimer() {
     timerRL = setInterval(RL, 2600);
     timerUD = setInterval(UD, 3900);
+    timerbgBlackRed = setInterval(changeBgColor, 2000);
+    timerH1Colors = setInterval(changeH1Color, 2500);
+
     setTimeout(dizzy, 15000);
 }
 
 function dizzy() {
     clearInterval(timerRL);
     clearInterval(timerUD);
-    alert("I'm Dizzy Yo!")
+
+    clearInterval(timerbgBlackRed);
+    clearInterval(timerH1Colors);
+    thisH1.innerText = "I'm so dizzy!";
 }
 
 /**
@@ -77,27 +91,21 @@ function timeOutName(givenName) {
             setTimeout(timeOutName, 1000, (givenName.slice(0, givenName.length - 1)));
     }
 }
-let elemBody = document.getElementsByTagName("body")[0];
-let colorOne = "red";
-function bgColors() {
-    
 
-    if (colorOne === "red") {
-        elemBody.style.backgroundColor = colorOne;
-        colorOne = "black";
-    } else {
-        elemBody.style.backgroundColor = colorOne;
-        colorOne = "red";
-    }
-}
-let timerColors;
-function timerBGColors() {
-    timerColors = setInterval(bgColors, 2000)
-    setTimeout(timeOutColors, 8000)
+
+function changeBgColor() {
+    bgBodyOrder =
+        bgBodyOrder === "red" && h1ColorsOrder != "black" ? "black" : "red";
+    thisBody.style.backgroundColor = bgBodyOrder;
 }
 
-function timeOutColors() {
-    clearInterval(timerColors);
-    elemBody.style.backgroundColor ="#FFE4C4";
-    console.log("finished!");
+function changeH1Color() {
+    h1ColorsOrder =
+        h1ColorsOrder === "orange" && bgBodyOrder != "black" ? "black" : "orange";
+    thisH1.style.color = h1ColorsOrder;
 }
+
+function toConsole(dis) {
+    console.log(dis);
+}
+ 
