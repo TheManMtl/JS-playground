@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>jQuery Fun</title>
+    <style>
+        #color_change {
+            border: 1px solid;
+        }
+
+        .applesauce {
+            font-weight: bold;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"
+        integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+
+    <h2><span class="applesauce">Orange</span> Ninja Cats are not seen often.</h2>
+    <p>I hope to one day see at least one <span class="applesauce">Orange</span> Ninja Cat. It would definitely be a
+        sight to see! Just imagine it walking down the street or running throught an empty field.
+
+    </p>
+
+    Change the ninja cat's color to:
+    <input id="txtColor" value="Blue">
+    <button id="button_change">Change!</button>
+
+
+    <script>
+        /*
+        1. Add the jQuery library to the html page.
+        2. When the button is clicked, all occurrences of the word Orange should be changed to the text specified in the input field. 
+            The input field currently has the word Blue.
+        */
+        $(document).ready(function () {
+            $("#button_change").click(changeText);
+            function changeText() {
+            $(".applesauce").text($("#txtColor").val())
+        }
+
+        $("#button_change").click(changeColor);
+            function changeColor() {
+            $(".applesauce").css("color",$("#txtColor").val())
+        }
+
+        $("h2").hover(function(){
+            $(this).css("color",$("#txtColor").val())
+        },function(){
+            $(this).css("color","black")
+        })
+        });
+
+        //$(".applesauce").toggle();
+
+        
+
+    </script>
+
+</body>
+
+</html>

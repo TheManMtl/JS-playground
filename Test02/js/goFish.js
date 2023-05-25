@@ -28,7 +28,7 @@ function setupGoFish() {
     let btnRetry = document.createElement("input");// btn let's go fishing
     // textbox attributes
     inputBox.id = "txtNumber";
-    inputBox.type = "text";
+    inputBox.type = "number";
 
     //button Bait attributes
     btnGuess.id = "btnGuess";
@@ -143,10 +143,7 @@ function fishOnHook() {
     } else {//If the validation FAILS
         inputBox.value = "";
     }
-
 }
-
-
 /**
  * generating a random number between two numbers inclusivly
  * @param {number} [min=1] 

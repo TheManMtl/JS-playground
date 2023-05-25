@@ -38,7 +38,6 @@ function showTable(rows, cols) {
 	trNode.id = "tableHeader";
 	let tdNode;
 	let thNode;
-
 	tableNode.id = "multiplyTB";
 	bodyNode.appendChild(tableNode);
 

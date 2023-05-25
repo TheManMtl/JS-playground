@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Hangman Game</title>
+  <link rel="stylesheet" type="text/css" href="styles/hangman.css">
+</head>
+<body>
+  <h1>Hangman Game</h1>
+  <div id="word"></div>
+  <div id="guesses">Incorrect Guesses: <span id="incorrectGuesses"></span></div>
+  <div id="guessInput">
+    <input type="text" id="letterInput" maxlength="1" placeholder="Enter a letter">
+    <button id="guessButton">Guess</button>
+  </div>
+  <svg id="hangman" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 400" width="200" height="300">
+    <line class="hangman-piece wrong-guess-1" x1="100" y1="350" x2="200" y2="350"/>
+    <line class="hangman-piece wrong-guess-2" x1="150" y1="50" x2="150" y2="350"/>
+    <line class="hangman-piece wrong-guess-3" x1="150" y1="50" x2="250" y2="50"/>
+    <line class="hangman-piece wrong-guess-4" x1="250" y1="50" x2="250" y2="100"/>
+    <circle class="hangman-piece wrong-guess-5" cx="250" cy="130" r="30"/>
+    <line class="hangman-piece wrong-guess-6" x1="250" y1="160" x2="250" y2="250"/>
+  </svg>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="js/hangman.js"></script>
+</body>
+</html>
