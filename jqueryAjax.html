@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>jQuery ajax jason | Star wars</title>
+    <link rel="stylesheet" href="styles/ajax.css">
+</head>
+
+<body>
+    <header>
+        <h1>Star Wars</h1>
+    </header>
+
+    <div id="container">
+
+        <button id="showFilm">Show Film</button>
+        <button id="showPeople">Show People</button>
+        <button id="showPlanet">Show Planet</button>
+        <button id="showSpec">Show species</button>
+        <button id="showStarShip">Show Star Ships</button>
+        <button id="showVehicle">Show Vehicles</button>
+        <br>
+        <select name="cat" id="lists">
+            <option value="Film">Show Film</option>
+            <option value="People">Show People</option>
+            <option value="Planet">Show Planet</option>
+            <option value="species">Show species</option>
+            <option value="Ships">Show Star Ships</option>
+            <option value="Vehicles">Show Vehicles</option>
+        </select> 
+
+        <p id="loading"><small>loading...</small></p>
+
+
+        <h2 id="title"></h2>
+        <ul id="res">
+
+        </ul>
+        <button id="preBtn">Previous</button>
+        <button id="nextBtn">Next</button>
+
+        <button id="see">See</button>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+    <script src="js/ajax.js">
+
+    </script>
+</body>
+
+</html>
