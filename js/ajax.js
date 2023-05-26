@@ -14,8 +14,8 @@ let list = [];
 
 function doList(url) {
 
-    // $('#loading').show();
-    // $('#title').text = '';
+    $('#loading').show();
+    $('#title').text = '';
  // select from array
  // if char is in string
  // compare two string
@@ -34,27 +34,27 @@ function doList(url) {
         }
 
 
-        // $('#res').empty();
-        // $.each(list.results, (key, names) => {
-        //     let a = list.results[key].name !== undefined ? list.results[key].name : list.results[key].title
-        //     $('#res').append('<li>' + a + '</li>');
-        // });
+        $('#res').empty();
+        $.each(list.results, (key, names) => {
+            let a = list.results[key].name !== undefined ? list.results[key].name : list.results[key].title
+            $('#res').append('<li>' + a + '</li>');
+        });
 
-        // perUrl = list.previous;
-        // nextUrl = list.next;
+        perUrl = list.previous;
+        nextUrl = list.next;
 
-        // if (list.previous !== null) {
-        //     $('#preBtn').show();
-        // } else {
-        //     $('#preBtn').hide();
-        // }
+        if (list.previous !== null) {
+            $('#preBtn').show();
+        } else {
+            $('#preBtn').hide();
+        }
 
-        // if (list.next !== null) {
-        //     $('#nextBtn').show();
-        // } else {
-        //     $('#nextBtn').hide();
-        // }
-        // $('#loading').hide();
+        if (list.next !== null) {
+            $('#nextBtn').show();
+        } else {
+            $('#nextBtn').hide();
+        }
+        $('#loading').hide();
 
     })
 
